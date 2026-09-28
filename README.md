@@ -26,3 +26,4 @@ renvoie vers l'App Store avec le lien de campagne suivi.
 | Slug | App | Adresse |
 |---|---|---|
 | `puzzle` | Puzzle Contest | https://charlesven.github.io/apps/puzzle/ |
+| `predisport` | Pêche en Mer - Predisport | https://charlesven.github.io/apps/predisport/ |

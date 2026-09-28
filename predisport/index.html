@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pêche en Mer - Predisport — faut-il partir pêcher aujourd'hui ?</title>
+<meta name="description" content="Un verdict clair pour votre coin, la bonne marée, le spot abrité du vent. Verdict et marées gratuits sur iPhone.">
+<meta name="apple-itunes-app" content="app-id=6758053859">
+<meta property="og:title" content="Pêche en Mer - Predisport">
+<meta property="og:description" content="Faut-il partir pêcher aujourd'hui ? Le verdict du jour, la bonne marée, le spot abrité du vent.">
+<meta property="og:image" content="parc.jpg">
+<meta name="theme-color" content="#E9F3F8">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<style>
+  :root {
+    --bg: #E9F3F8; --ink: #0F2A3A; --ink2: #4C6472;
+    --accent: #087FAF; --card: #FFFFFF;
+    --round: ui-rounded, "SF Pro Rounded", -apple-system, system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html { background: var(--bg); }
+  body {
+    font-family: -apple-system, system-ui, sans-serif; color: var(--ink);
+    min-height: 100svh; display: flex; flex-direction: column; align-items: center;
+    padding: max(20px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom));
+    -webkit-font-smoothing: antialiased;
+  }
+  main { width: 100%; max-width: 420px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .brand img { width: 52px; height: 52px; border-radius: 12px; box-shadow: 0 4px 14px rgba(8,127,175,.25); }
+  .brand span { font-family: var(--round); font-weight: 800; font-size: 26px; color: var(--accent); letter-spacing: -.01em; }
+  h1 { font-family: var(--round); font-weight: 800; font-size: 30px; line-height: 1.12; letter-spacing: -.02em; }
+  .lead { margin-top: 10px; font-size: 17px; line-height: 1.45; color: var(--ink2); }
+  .cta { margin-top: 22px; display: inline-block; }
+  .cta img { height: 58px; width: auto; display: block; }
+  .free { margin-top: 10px; font-size: 14px; color: var(--ink2); }
+  .video {
+    margin-top: 24px; width: 100%; max-width: 300px; aspect-ratio: 9 / 16;
+    border-radius: 28px; overflow: hidden; background: #062330;
+    box-shadow: 0 18px 40px rgba(15,42,58,.18);
+  }
+  .video video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .points { margin-top: 24px; list-style: none; padding: 0; width: 100%; display: grid; gap: 10px; }
+  .points li { background: var(--card); border-radius: 16px; padding: 14px 16px; font-size: 16px; line-height: 1.35; text-align: left; }
+  .points b { color: var(--accent); }
+  .cta2 { margin-top: 24px; }
+  footer { margin-top: 32px; font-size: 12px; color: var(--ink2); text-align: center; line-height: 1.6; }
+  footer a { color: var(--ink2); }
+</style>
+</head>
+<body>
+<main>
+  <div class="brand"><img src="icon.png" alt="" width="52" height="52"><span>Predisport</span></div>
+
+  <h1>Faut-il partir pêcher aujourd'hui&nbsp;?</h1>
+  <p class="lead">Un verdict clair pour votre coin, la bonne marée, et le spot abrité du vent.</p>
+
+  <a class="cta store" href="https://apps.apple.com/app/apple-store/id6758053859?pt=625184&amp;ct=fb-pub&amp;mt=8">
+    <img src="badge-app-store.svg" alt="Télécharger dans l'App Store">
+  </a>
+  <p class="free">Verdict du jour et marées gratuits · 14 jours de Pro offerts</p>
+
+  <div class="video">
+    <video src="parc.mp4" poster="parc.jpg" autoplay muted loop playsinline preload="metadata"></video>
+  </div>
+
+  <ul class="points">
+    <li><b>Le bon moment</b>&nbsp;: marée, vent, houle et lune croisés pour chaque heure, jusqu'à 10 jours à l'avance.</li>
+    <li><b>Le bon spot</b>&nbsp;: chaque spot prend sa couleur selon le vent du jour, épaves et pointes comprises.</li>
+    <li><b>Pourquoi ça a mordu</b>&nbsp;: chaque prise garde sa marée, son heure et ses conditions.</li>
+  </ul>
+
+  <a class="cta cta2 store" href="https://apps.apple.com/app/apple-store/id6758053859?pt=625184&amp;ct=fb-pub&amp;mt=8">
+    <img src="badge-app-store.svg" alt="Télécharger dans l'App Store">
+  </a>
+</main>
+
+<footer>
+  <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Conditions d'utilisation</a> ·
+  <a href="https://www.predisport.com/privacy">Confidentialité</a><br>
+  Apple et le logo Apple sont des marques d'Apple Inc.
+</footer>
+
+<script>
+  try {
+    var ct = new URLSearchParams(location.search).get('ct');
+    if (ct && /^[\w-]{1,40}$/.test(ct)) {
+      document.querySelectorAll('a.store').forEach(function (a) {
+        a.href = a.href.replace(/ct=[^&]*/, 'ct=' + ct);
+      });
+    }
+  } catch (e) {}
+</script>
+</body>
+</html>
