@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Envies — réveille ton couple</title>
+<meta name="description" content="Chaque jour, cinq envies à deux. Vos oui communs se révèlent, un seul est tiré au sort. Le premier tirage est offert.">
+<meta name="apple-itunes-app" content="app-id=6814995211">
+<meta property="og:title" content="Envies">
+<meta property="og:description" content="Cinq minutes par jour pour vous rapprocher.">
+<meta property="og:image" content="on-se-retrouve.jpg">
+<meta name="theme-color" content="#F7F1E8">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<style>
+  :root {
+    --bg: #F7F1E8; --ink: #0C286A; --ink2: #3F5270;
+    --accent: #D76549; --card: #FFFFFF; --soft: #FBE6DF;
+    --serif: "New York", ui-serif, Georgia, serif;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html { background: var(--bg); }
+  body {
+    font-family: -apple-system, system-ui, sans-serif; color: var(--ink);
+    min-height: 100svh; display: flex; flex-direction: column; align-items: center;
+    padding: max(20px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom));
+    -webkit-font-smoothing: antialiased;
+  }
+  main { width: 100%; max-width: 420px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .brand img { width: 52px; height: 52px; border-radius: 12px; box-shadow: 0 4px 14px rgba(12,40,106,.22); }
+  .brand span { font-family: var(--serif); font-weight: 600; font-size: 28px; color: var(--ink); letter-spacing: -.01em; }
+  h1 { font-family: var(--serif); font-weight: 600; font-size: 30px; line-height: 1.15; letter-spacing: -.01em; }
+  h1 em { font-style: normal; color: var(--accent); }
+  .lead { margin-top: 10px; font-size: 17px; line-height: 1.45; color: var(--ink2); }
+  .cta { margin-top: 22px; display: inline-block; }
+  .cta img { height: 58px; width: auto; display: block; }
+  .free { margin-top: 10px; font-size: 14px; color: var(--ink2); }
+  .video {
+    margin-top: 24px; width: 100%; max-width: 300px; aspect-ratio: 9 / 16;
+    border-radius: 28px; overflow: hidden; background: #0C1A3A;
+    box-shadow: 0 18px 40px rgba(12,40,106,.18);
+  }
+  .video video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .points { margin-top: 24px; list-style: none; padding: 0; width: 100%; display: grid; gap: 10px; }
+  .points li { background: var(--card); border-radius: 16px; padding: 14px 16px; font-size: 16px; line-height: 1.35; text-align: left; }
+  .points b { color: var(--accent); }
+  .cta2 { margin-top: 24px; }
+  footer { margin-top: 32px; font-size: 12px; color: var(--ink2); text-align: center; line-height: 1.6; }
+  footer a { color: var(--ink2); }
+</style>
+</head>
+<body>
+<main>
+  <div class="brand"><img src="icon.png" alt="" width="52" height="52"><span>Envies</span></div>
+
+  <h1>Cinq minutes par jour pour <em>vous rapprocher.</em></h1>
+  <p class="lead">Chaque jour, cinq envies à deux. Chacun répond en secret, seuls vos oui communs se révèlent, et une seule est tirée au sort.</p>
+
+  <a class="cta store" href="https://apps.apple.com/app/apple-store/id6814995211?pt=625184&amp;ct=fb-pub&amp;mt=8">
+    <img src="badge-app-store.svg" alt="Télécharger dans l'App Store">
+  </a>
+  <p class="free">Le premier tirage est offert</p>
+
+  <div class="video">
+    <video src="on-se-retrouve.mp4" poster="on-se-retrouve.jpg" autoplay muted loop playsinline preload="metadata"></video>
+  </div>
+
+  <ul class="points">
+    <li><b>Du plus tendre au plus intime</b>&nbsp;: une question jamais posée, une balade, un dîner, un moment rien qu'à vous.</li>
+    <li><b>Vos réponses restent secrètes</b>&nbsp;: personne ne dit non en face, seuls vos oui communs apparaissent.</li>
+    <li><b>Le hasard choisit pour vous</b>&nbsp;: plus besoin de décider, il reste juste à le vivre.</li>
+  </ul>
+
+  <a class="cta cta2 store" href="https://apps.apple.com/app/apple-store/id6814995211?pt=625184&amp;ct=fb-pub&amp;mt=8">
+    <img src="badge-app-store.svg" alt="Télécharger dans l'App Store">
+  </a>
+</main>
+
+<footer>
+  <a href="https://charlesven.github.io/legal/envie/cgu.html">Conditions d'utilisation</a> ·
+  <a href="https://charlesven.github.io/legal/envie/confidentialite.html">Confidentialité</a><br>
+  Apple et le logo Apple sont des marques d'Apple Inc.
+</footer>
+
+<script>
+  // Garde la source de campagne si la page est ouverte avec ?ct=… (ex. ct=reels), sinon fb-pub.
+  try {
+    var ct = new URLSearchParams(location.search).get('ct');
+    if (ct && /^[\w-]{1,40}$/.test(ct)) {
+      document.querySelectorAll('a.store').forEach(function (a) {
+        a.href = a.href.replace(/ct=[^&]*/, 'ct=' + ct);
+      });
+    }
+  } catch (e) {}
+</script>
+</body>
+</html>
