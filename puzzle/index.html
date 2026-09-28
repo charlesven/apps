@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Puzzle Contest — tes souvenirs deviennent des puzzles</title>
+<meta name="description" content="Un concours de puzzle chaque jour : même image, même découpe, un chrono et un classement. Gratuit sur l'App Store.">
+<meta name="apple-itunes-app" content="app-id=6810760186">
+<meta property="og:title" content="Puzzle Contest">
+<meta property="og:description" content="Tes souvenirs deviennent des puzzles. Un concours chaque jour.">
+<meta property="og:image" content="gymnase.jpg">
+<meta name="theme-color" content="#EEF3FB">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<style>
+  :root {
+    --bg: #EEF3FB; --ink: #141B2E; --ink2: #525B70;
+    --accent: #1445AD; --card: #FFFFFF;
+    --round: ui-rounded, "SF Pro Rounded", -apple-system, system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html { background: var(--bg); }
+  body {
+    font-family: -apple-system, system-ui, sans-serif; color: var(--ink);
+    min-height: 100svh; display: flex; flex-direction: column; align-items: center;
+    padding: max(20px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom));
+    -webkit-font-smoothing: antialiased;
+  }
+  main { width: 100%; max-width: 420px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .brand img { width: 52px; height: 52px; border-radius: 12px; box-shadow: 0 4px 14px rgba(20,69,173,.25); }
+  .brand span { font-family: var(--round); font-weight: 800; font-size: 26px; color: var(--accent); letter-spacing: -.01em; }
+  h1 { font-family: var(--round); font-weight: 800; font-size: 30px; line-height: 1.12; letter-spacing: -.02em; }
+  .lead { margin-top: 10px; font-size: 17px; line-height: 1.45; color: var(--ink2); }
+  .cta { margin-top: 22px; display: inline-block; }
+  .cta img { height: 58px; width: auto; display: block; }
+  .free { margin-top: 10px; font-size: 14px; color: var(--ink2); }
+  .video {
+    margin-top: 24px; width: 100%; max-width: 300px; aspect-ratio: 9 / 16;
+    border-radius: 28px; overflow: hidden; background: #0d1426;
+    box-shadow: 0 18px 40px rgba(20,27,46,.18);
+  }
+  .video video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .points { margin-top: 24px; list-style: none; padding: 0; width: 100%; display: grid; gap: 10px; }
+  .points li { background: var(--card); border-radius: 16px; padding: 14px 16px; font-size: 16px; line-height: 1.35; text-align: left; }
+  .points b { color: var(--accent); }
+  .cta2 { margin-top: 24px; }
+  footer { margin-top: 32px; font-size: 12px; color: var(--ink2); text-align: center; line-height: 1.6; }
+  footer a { color: var(--ink2); }
+</style>
+</head>
+<body>
+<main>
+  <div class="brand"><img src="icon.png" alt="" width="52" height="52"><span>Puzzle Contest</span></div>
+
+  <h1>Tes souvenirs deviennent des puzzles.</h1>
+  <p class="lead">Un concours chaque jour&nbsp;: même image, même découpe, un chrono et un classement.</p>
+
+  <a class="cta store" href="https://apps.apple.com/app/apple-store/id6810760186?pt=625184&amp;ct=fb-pub&amp;mt=8">
+    <img src="badge-app-store.svg" alt="Télécharger dans l'App Store">
+  </a>
+  <p class="free">Gratuit · trois concours offerts chaque jour</p>
+
+  <div class="video">
+    <video src="gymnase.mp4" poster="gymnase.jpg" autoplay muted loop playsinline preload="metadata"></video>
+  </div>
+
+  <ul class="points">
+    <li><b>Joue depuis ton canapé</b>, plus besoin d'attendre le concours du mois.</li>
+    <li><b>Mesure-toi au monde entier</b> sur la même image, au même moment.</li>
+    <li><b>Ta première photo en puzzle est offerte</b>&nbsp;: tes souvenirs, à assembler en famille.</li>
+  </ul>
+
+  <a class="cta cta2 store" href="https://apps.apple.com/app/apple-store/id6810760186?pt=625184&amp;ct=fb-pub&amp;mt=8">
+    <img src="badge-app-store.svg" alt="Télécharger dans l'App Store">
+  </a>
+</main>
+
+<footer>
+  <a href="https://hukhymphvuyduftogcpz.supabase.co/functions/v1/legal/cgu">Conditions d'utilisation</a> ·
+  <a href="https://hukhymphvuyduftogcpz.supabase.co/functions/v1/legal/confidentialite">Confidentialité</a><br>
+  Apple et le logo Apple sont des marques d'Apple Inc.
+</footer>
+
+<script>
+  // Garde la source de campagne si la page est ouverte avec ?ct=… (ex. ct=reels), sinon fb-pub.
+  try {
+    var ct = new URLSearchParams(location.search).get('ct');
+    if (ct && /^[\w-]{1,40}$/.test(ct)) {
+      document.querySelectorAll('a.store').forEach(function (a) {
+        a.href = a.href.replace(/ct=[^&]*/, 'ct=' + ct);
+      });
+    }
+  } catch (e) {}
+</script>
+</body>
+</html>
