@@ -16,7 +16,7 @@ renvoie vers l'App Store avec le lien de campagne suivi.
 
 - Lien App Store : `https://apps.apple.com/app/apple-store/id<ID>?pt=625184&ct=<source>&mt=8` ; `ct` par défaut
   `fb-pub`, remplacé par le paramètre `?ct=` de l'adresse de la page (ex. `…/puzzle/?ct=reels`).
-- Règles de texte : celles des vidéos (`Video/regles/REGLES-GLOBALES.md`) — **aucune mention d'IA** (G63), aucun
+- Règles de texte : celles des vidéos (`Video/regles/REGLES-GLOBALES.md`) — **aucune mention d'IA** (G63 ; exception `carburant` : l'IA spécialisée de l'app se nomme, jamais « généré par IA »), aucun
   prix, même registre que l'app, gratuit avant payant.
 - Pied de page : liens CGU + confidentialité de l'app, mention « Apple et le logo Apple sont des marques d'Apple Inc. »
 - Mise en ligne : `git add -A && git commit -m "puzzle: page" && git push` ; vérifier `curl -I` → 200.
@@ -28,3 +28,5 @@ renvoie vers l'App Store avec le lien de campagne suivi.
 | `puzzle` | Puzzle Contest | https://charlesven.github.io/apps/puzzle/ |
 | `predisport` | Pêche en Mer - Predisport | https://charlesven.github.io/apps/predisport/ |
 | `envie` | Envies : réveille ton couple | https://charlesven.github.io/apps/envie/ |
+| `ceramist` | Ceramist : poterie, tournage | https://charlesven.github.io/apps/ceramist/ |
+| `carburant` | Je fais le plein ? Analyse IA | https://charlesven.github.io/apps/carburant/ (visuel provisoire : capture App Store, à remplacer par une vidéo validée) |

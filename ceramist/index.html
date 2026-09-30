@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ceramist — poterie, tournage</title>
+<meta name="description" content="Dessinez votre pièce du bout du doigt, voyez-la en 3D et apprenez le tournage étape par étape. Gratuit pour commencer, sans publicité.">
+<meta name="apple-itunes-app" content="app-id=6809903004">
+<meta property="og:title" content="Ceramist">
+<meta property="og:description" content="Voyez votre pièce avant de toucher la terre.">
+<meta property="og:image" content="bol-haut.jpg">
+<meta name="theme-color" content="#F5F5F4">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<style>
+  :root {
+    --bg: #F5F5F4; --ink: #111111; --ink2: #666663;
+    --accent: #111111; --mark: #FFD555; --card: #FFFFFF;
+    --serif: "New York", ui-serif, Georgia, serif;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html { background: var(--bg); }
+  body {
+    font-family: -apple-system, system-ui, sans-serif; color: var(--ink); background: var(--bg);
+    min-height: 100svh; display: flex; flex-direction: column; align-items: center;
+    padding: max(20px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom));
+    -webkit-font-smoothing: antialiased;
+  }
+  main { width: 100%; max-width: 420px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .brand img { width: 52px; height: 52px; border-radius: 12px; box-shadow: 0 4px 14px rgba(17,17,17,.14); }
+  .brand span { font-family: var(--serif); font-weight: 400; font-size: 30px; color: var(--ink); letter-spacing: -.02em; }
+  h1 { font-family: var(--serif); font-weight: 500; font-size: 30px; line-height: 1.15; letter-spacing: -.01em; }
+  h1 em { font-style: normal; background: linear-gradient(transparent 62%, var(--mark) 62%); }
+  .lead { margin-top: 10px; font-size: 17px; line-height: 1.45; color: var(--ink2); }
+  .cta { margin-top: 22px; display: inline-block; }
+  .cta img { height: 58px; width: auto; display: block; }
+  .free { margin-top: 10px; font-size: 14px; color: var(--ink2); }
+  .video {
+    margin-top: 24px; width: 100%; max-width: 300px; aspect-ratio: 9 / 16;
+    border-radius: 28px; overflow: hidden; background: #1a1a1a;
+    box-shadow: 0 18px 40px rgba(17,17,17,.16);
+  }
+  .video video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .points { margin-top: 24px; list-style: none; padding: 0; width: 100%; display: grid; gap: 10px; }
+  .points li { background: var(--card); border-radius: 16px; padding: 14px 16px; font-size: 16px; line-height: 1.35; text-align: left; }
+  .points b { color: var(--ink); }
+  .cta2 { margin-top: 24px; }
+  footer { margin-top: 32px; font-size: 12px; color: var(--ink2); text-align: center; line-height: 1.6; }
+  footer a { color: var(--ink2); }
+</style>
+</head>
+<body>
+<main>
+  <div class="brand"><img src="icon.png" alt="" width="52" height="52"><span>Ceramist</span></div>
+
+  <h1>Voyez votre pièce <em>avant de toucher la terre.</em></h1>
+  <p class="lead">Dessinez un bol, un mug ou un vase du bout du doigt, voyez-le en 3D et apprenez à le tourner, étape par étape.</p>
+
+  <a class="cta store" href="https://apps.apple.com/app/apple-store/id6809903004?pt=625184&amp;ct=fb-pub&amp;mt=8">
+    <img src="badge-app-store.svg" alt="Télécharger dans l'App Store">
+  </a>
+  <p class="free">Gratuit pour commencer · sans publicité</p>
+
+  <div class="video">
+    <video src="bol-haut.mp4" poster="bol-haut.jpg" autoplay muted loop playsinline preload="metadata"></video>
+  </div>
+
+  <ul class="points">
+    <li><b>Des pièces qui tiennent au tournage</b>&nbsp;: vous dessinez votre forme, vous savez si elle est réalisable et pourquoi, avant de centrer la motte.</li>
+    <li><b>Progressez sans vous perdre</b>&nbsp;: centrer, percer, monter, avec le geste expliqué et l'objectif de chaque étape.</li>
+    <li><b>La boîte à outils de l'atelier</b>&nbsp;: retrait des terres, contenance, poids de terre. Les calculs qu'on cherche toujours au mauvais moment.</li>
+  </ul>
+
+  <a class="cta cta2 store" href="https://apps.apple.com/app/apple-store/id6809903004?pt=625184&amp;ct=fb-pub&amp;mt=8">
+    <img src="badge-app-store.svg" alt="Télécharger dans l'App Store">
+  </a>
+</main>
+
+<footer>
+  <a href="https://mannxvoyxbfbnuyitmou.supabase.co/functions/v1/legal/cgu">Conditions d'utilisation</a> ·
+  <a href="https://mannxvoyxbfbnuyitmou.supabase.co/functions/v1/legal/confidentialite">Confidentialité</a><br>
+  Apple et le logo Apple sont des marques d'Apple Inc.
+</footer>
+
+<script>
+  // Garde la source de campagne si la page est ouverte avec ?ct=… (ex. ct=reels), sinon fb-pub.
+  try {
+    var ct = new URLSearchParams(location.search).get('ct');
+    if (ct && /^[\w-]{1,40}$/.test(ct)) {
+      document.querySelectorAll('a.store').forEach(function (a) {
+        a.href = a.href.replace(/ct=[^&]*/, 'ct=' + ct);
+      });
+    }
+  } catch (e) {}
+</script>
+</body>
+</html>
