@@ -37,13 +37,12 @@
   .cta { margin-top: 22px; display: inline-block; }
   .cta img { height: 58px; width: auto; display: block; }
   .free { margin-top: 10px; font-size: 14px; color: var(--ink2); }
-  /* Visuel provisoire (capture App Store) : à remplacer par une vidéo validée (<video> comme les autres pages). */
   .video {
-    margin-top: 24px; width: 100%; max-width: 300px; aspect-ratio: 720 / 1564;
+    margin-top: 24px; width: 100%; max-width: 300px; aspect-ratio: 9 / 16;
     border-radius: 28px; overflow: hidden; background: #0f2f7a;
     box-shadow: 0 18px 40px rgba(0,0,0,.28);
   }
-  .video img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .video video { width: 100%; height: 100%; object-fit: cover; display: block; }
   .points { margin-top: 24px; list-style: none; padding: 0; width: 100%; display: grid; gap: 10px; }
   .points li { background: var(--card); border-radius: 16px; padding: 14px 16px; font-size: 16px; line-height: 1.35; text-align: left; }
   .points b { color: var(--accent); }
@@ -65,7 +64,7 @@
   <p class="free">Gratuit · sans inscription</p>
 
   <div class="video">
-    <img src="moment.jpg" alt="Le verdict du jour et le prix le moins cher autour de vous" width="720" height="1564">
+    <video src="ou-et-quand.mp4" poster="ou-et-quand.jpg" autoplay muted loop playsinline preload="metadata"></video>
   </div>
 
   <ul class="points">
