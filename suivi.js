@@ -62,3 +62,92 @@
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", demarrer);
   else demarrer();
 })();
+
+/* Mesure d'audience des pages, sans cookie (P-018, accord de Charles du 01/10/2026).
+ *
+ * Indépendante du bandeau : aucun cookie, aucun localStorage ni sessionStorage, aucun identifiant persistant.
+ * Un visit_id tiré au hasard à chaque chargement (jamais conservé) relie l'affichage et le clic d'une même visite.
+ * Envoie « landing_view » à l'ouverture et « store_click » au clic sur le bouton App Store, avec la page, le lien
+ * ct, l'appareil (iPhone / iPad / autre), la langue et le domaine d'origine (ex. l.instagram.com), vers la fonction
+ * analytics-ingest de l'app (canal web, table landing_events, jamais mêlée aux statistiques de l'app ;
+ * PlatformKit docs/CONTRACT-analytics.md, « Canal web »). Rien n'est envoyé si le navigateur demande
+ * « Ne pas me pister ». Un échec d'envoi est silencieux.
+ * Les clés d'app sont publiques par conception (comme dans l'app) : elles écartent seulement le bruit.
+ */
+(function () {
+  var CENTRAL = "https://wmobudvkpofvtfmzehoi.supabase.co/functions/v1/analytics-ingest";
+  var PAGES = {
+    predisport: { url: CENTRAL, app: "predisport", cle: "21df2c20-6c75-41a7-907b-5d29c8187097" },
+    antidepense: { url: CENTRAL, app: "antidepense", cle: "0adf7ad3-cdcc-401f-ae84-52fda14f0cc9" },
+    carburant: { url: CENTRAL, app: "carburant", cle: "4c1f0b2e-7d3a-4a9e-9f61-2b8c5d0e7a13" },
+    puzzle: { url: "https://hukhymphvuyduftogcpz.supabase.co/functions/v1/analytics-ingest", app: "puzzle", cle: "6c0902e0-729d-4470-b794-7272b1280126" },
+    ceramist: { url: "https://mannxvoyxbfbnuyitmou.supabase.co/functions/v1/analytics-ingest", app: "ceramist", cle: "33baa170-a139-4f45-b84e-3774edbafd5c" },
+    envie: { url: "https://rxsqbdsdifepwigrqldz.supabase.co/functions/v1/analytics-ingest", app: "envie", cle: "42203294-b7ed-43a0-8a71-57e1197df5a0" }
+  };
+
+  try {
+    if (navigator.doNotTrack === "1" || typeof fetch !== "function") return;
+    var morceaux = location.pathname.split("/").filter(function (m) { return m && m !== "index.html"; });
+    var page = (morceaux.slice(-1)[0] || "").replace(/\.html$/, "");
+    var cible = PAGES.hasOwnProperty(page) ? PAGES[page] : null;
+    if (!cible) return;
+
+    var visite = uuid();
+    if (!visite) return;
+    var ct = "aucun";
+    try {
+      var brut = new URLSearchParams(location.search).get("ct");
+      if (brut && /^[\w-]{1,40}$/.test(brut)) ct = brut;
+    } catch (e) {}
+    var origine = null;
+    try {
+      var h = document.referrer ? new URL(document.referrer).hostname.toLowerCase() : "";
+      if (h && h !== location.hostname) origine = h.slice(0, 100);
+    } catch (e) {}
+    var ua = navigator.userAgent || "";
+    var appareil = /iPad/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1) ? "ipad"
+      : /iPhone|iPod/.test(ua) ? "iphone" : "other";
+    var langue = (navigator.language || "").slice(0, 16);
+
+    var envoyer = function (evenement) {
+      var id = uuid();
+      if (!id) return;
+      var props = { page: page, ct: ct };
+      if (origine) props.referrer_host = origine;
+      var corps = {
+        app: cible.app,
+        sent_at: new Date().toISOString(),
+        device: { install_id: visite, channel: "web", platform: appareil, language: langue },
+        events: [{ id: id, occurred_at: new Date().toISOString(), session_id: visite, event: evenement, props: props }]
+      };
+      try {
+        fetch(cible.url, {
+          method: "POST",
+          keepalive: true,
+          credentials: "omit",
+          headers: { "content-type": "application/json", "x-app-key": cible.cle },
+          body: JSON.stringify(corps)
+        }).catch(function () {});
+      } catch (e) {}
+    };
+
+    var demarrer = function () {
+      envoyer("landing_view");
+      document.querySelectorAll("a.store").forEach(function (a) {
+        a.addEventListener("click", function () { envoyer("store_click"); });
+      });
+    };
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", demarrer);
+    else demarrer();
+  } catch (e) {}
+
+  function uuid() {
+    try {
+      if (window.crypto && typeof crypto.randomUUID === "function") return crypto.randomUUID();
+      var o = crypto.getRandomValues(new Uint8Array(16));
+      o[6] = (o[6] & 15) | 64; o[8] = (o[8] & 63) | 128;
+      var x = Array.prototype.map.call(o, function (b) { return (b + 256).toString(16).slice(1); }).join("");
+      return x.slice(0, 8) + "-" + x.slice(8, 12) + "-" + x.slice(12, 16) + "-" + x.slice(16, 20) + "-" + x.slice(20);
+    } catch (e) { return null; }
+  }
+})();

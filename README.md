@@ -35,3 +35,11 @@ renvoie vers l'App Store avec le lien de campagne suivi.
 ## Mesure des publicités (`suivi.js`)
 
 Chaque page charge `../suivi.js` : un bandeau demande l'accord du visiteur ; seulement après « Accepter », le pixel Meta (jeu de données « Pages d'atterrissage des apps », 1071613332406077) envoie PageView et Lead au clic App Store. Refus ou pas de réponse : rien n'est chargé. Une nouvelle page doit inclure `<script src="../suivi.js" defer></script>` avant `</body>`.
+
+Le même script mesure aussi l'audience **sans cookie ni consentement** (P-018) : à chaque chargement, un identifiant de
+visite tiré au hasard (jamais conservé : ni cookie, ni localStorage), un `landing_view` à l'ouverture et un `store_click`
+au clic sur `a.store`, envoyés à la fonction `analytics-ingest` de l'app (canal web, table `landing_events` du projet
+Supabase de l'app, conservation 13 mois ; contrat PlatformKit `docs/CONTRACT-analytics.md`, « Canal web »). Rien ne
+part si le navigateur demande « Ne pas me pister ». Une nouvelle page doit être ajoutée à la table `PAGES` de
+`suivi.js` (slug → fonction, app, clé d'app publique de `~/.supabase/platformkit-secrets.json`), sinon elle n'est pas
+mesurée. Lecture des chiffres : RPC `analytics_landing(app, début, fin exclue)` (jour × `ct`).
