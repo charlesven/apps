@@ -30,3 +30,8 @@ renvoie vers l'App Store avec le lien de campagne suivi.
 | `envie` | Envies : réveille ton couple | https://charlesven.github.io/apps/envie/ |
 | `ceramist` | Ceramist : poterie, tournage | https://charlesven.github.io/apps/ceramist/ |
 | `carburant` | Je fais le plein ? Analyse IA | https://charlesven.github.io/apps/carburant/ (visuel provisoire : capture App Store, à remplacer par une vidéo validée) |
+| `antidepense` | Anti-Dépense | https://charlesven.github.io/apps/antidepense/ (visuel provisoire : capture App Store, à remplacer par une vidéo validée) |
+
+## Mesure des publicités (`suivi.js`)
+
+Chaque page charge `../suivi.js` : un bandeau demande l'accord du visiteur ; seulement après « Accepter », le pixel Meta (jeu de données « Pages d'atterrissage des apps », 1071613332406077) envoie PageView et Lead au clic App Store. Refus ou pas de réponse : rien n'est chargé. Une nouvelle page doit inclure `<script src="../suivi.js" defer></script>` avant `</body>`.
