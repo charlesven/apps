@@ -17,7 +17,7 @@ renvoie vers l'App Store avec le lien de campagne suivi.
 - Lien App Store : `https://apps.apple.com/app/apple-store/id<ID>?pt=625184&ct=<source>&mt=8` ; `ct` par défaut
   `fb-pub`, remplacé par le paramètre `?ct=` de l'adresse de la page (ex. `…/puzzle/?ct=reels`).
 - Règles de texte : celles des vidéos (`Video/regles/REGLES-GLOBALES.md`) — **aucune mention d'IA** (G63 ; exception `carburant` : l'IA spécialisée de l'app se nomme, jamais « généré par IA »), aucun
-  prix, même registre que l'app, gratuit avant payant.
+  prix, même registre que l'app ; **aucune mention de gratuit, payant, prix ou offre** (règle de Charles du 03/10/2026).
 - Pied de page : liens CGU + confidentialité de l'app, mention « Apple et le logo Apple sont des marques d'Apple Inc. »
 - Mise en ligne : `git add -A && git commit -m "puzzle: page" && git push` ; vérifier `curl -I` → 200.
 
