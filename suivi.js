@@ -89,6 +89,8 @@
     if (navigator.doNotTrack === "1" || typeof fetch !== "function") return;
     var morceaux = location.pathname.split("/").filter(function (m) { return m && m !== "index.html"; });
     var page = (morceaux.slice(-1)[0] || "").replace(/\.html$/, "");
+    // Pages par langue : /apps/<app>/<langue>/ (ex. predisport/es/) comptent pour l'app (05/10/2026)
+    if (!PAGES.hasOwnProperty(page) && /^[a-z]{2}$/.test(page) && morceaux.length > 1) page = morceaux[morceaux.length - 2];
     var cible = PAGES.hasOwnProperty(page) ? PAGES[page] : null;
     if (!cible) return;
 
