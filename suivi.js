@@ -77,7 +77,7 @@
 (function () {
   var CENTRAL = "https://ngkqxnjbzyutbnralfss.supabase.co/functions/v1/analytics-ingest"; // projet AdminTool depuis le 05/10/2026 (apps sans projet)
   var PAGES = {
-    predisport: { url: CENTRAL, app: "predisport", cle: "21df2c20-6c75-41a7-907b-5d29c8187097" },
+    predisport: { url: "https://wmobudvkpofvtfmzehoi.supabase.co/functions/v1/analytics-ingest", app: "predisport", cle: "21df2c20-6c75-41a7-907b-5d29c8187097" },
     antidepense: { url: CENTRAL, app: "antidepense", cle: "0adf7ad3-cdcc-401f-ae84-52fda14f0cc9" },
     carburant: { url: CENTRAL, app: "carburant", cle: "4c1f0b2e-7d3a-4a9e-9f61-2b8c5d0e7a13" },
     puzzle: { url: "https://hukhymphvuyduftogcpz.supabase.co/functions/v1/analytics-ingest", app: "puzzle", cle: "6c0902e0-729d-4470-b794-7272b1280126" },
