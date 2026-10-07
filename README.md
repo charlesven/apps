@@ -29,7 +29,7 @@ renvoie vers l'App Store avec le lien de campagne suivi.
 | `predisport` | Pêche en Mer - Predisport | https://charlesven.github.io/apps/predisport/ |
 | `envie` | Envies : réveille ton couple | https://charlesven.github.io/apps/envie/ |
 | `ceramist` | Ceramist : poterie, tournage | https://charlesven.github.io/apps/ceramist/ |
-| `carburant` | Je fais le plein ? Analyse IA | https://charlesven.github.io/apps/carburant/ (visuel provisoire : capture App Store, à remplacer par une vidéo validée) |
+| `carburant` | Je fais le plein ? Analyse IA | https://charlesven.github.io/apps/carburant/ |
 | `antidepense` | Anti-Dépense | https://charlesven.github.io/apps/antidepense/ (visuel provisoire : capture App Store, à remplacer par une vidéo validée) |
 
 ## Mesure des publicités (`suivi.js`)
